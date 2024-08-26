@@ -1,0 +1,6 @@
+// Updating and adding new attribute with MongoDB
+db.school.update(
+    {name: "Holberton school"},
+    {"$set": {address: "972 Mission street"}},
+    {multi: true}
+);
