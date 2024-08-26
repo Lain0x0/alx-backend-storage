@@ -1,0 +1,3 @@
+// Listing all dbs in MongoDB
+
+show dbs
