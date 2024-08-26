@@ -1,0 +1,2 @@
+// Creating a script that find all document in collection school
+db.school.find();
