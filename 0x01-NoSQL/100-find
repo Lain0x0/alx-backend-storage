@@ -1,0 +1,2 @@
+// Using regex expressions to find name start with by mongodb
+db.school.find({name:{$regex:"^Holberton"}});
