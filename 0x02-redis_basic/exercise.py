@@ -7,6 +7,18 @@ from unittest.mock import call
 """ Importing necessary libraries """
 
 
+def count_calls(method: Callable) -> Callable:
+    """ Returning callable function """
+    key = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """ Using warpper """
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+    return wrapper
+
+
 class Cache:
     def __init__(self):
         """ Initialize & Set up redis """
