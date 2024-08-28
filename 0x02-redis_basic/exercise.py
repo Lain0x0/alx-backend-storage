@@ -6,7 +6,7 @@ from functools import wraps
 from unittest.mock import call
 """ Importing necessary libraries """
 
-
+"""
 def count_calls(method: Callable) -> Callable:
     """ Returning callable function """
     key = method.__qualname__
@@ -32,6 +32,8 @@ def call_history(method: Callable) -> Callable:
 
         return output
     return wrapper
+
+"""
 
 
 class Cache:
@@ -64,6 +66,7 @@ class Cache:
     def get_int(self, key: str) -> int:
         """ redis cache GET method as integer """
         return self.get(key, int)
+"""
 
     def replay(method: Callable):
         """ Displaying the history of calls of a particular function """
@@ -82,3 +85,4 @@ class Cache:
     for input, output in zip(inputs, outputs):
         print(f"{method_name}(*{input.decode('utf-8')}) -> "
               f"{output.decode('utf-8')}")
+    """
