@@ -4,11 +4,11 @@ import requests
 import redis
 from functools import wraps
 
-store = redis.Redis()
+x = redis.Redis()
 
 
 def count_url_access(method):
-    """ Counting how much ... """
+    """ Couting and Tracking """
     @wraps(method)
     def wrapper(url):
         cached_key = "cached:" + url
@@ -19,15 +19,15 @@ def count_url_access(method):
         count_key = "count:" + url
         html = method(url)
 
-        store.incr(count_key)
-        store.set(cached_key, html)
-        store.expire(cached_key, 10)
+        x.incr(count_key)
+        x.set(cached_key, html)
+        x.expire(cached_key, 10)
         return html
     return wrapper
 
 
 @count_url_access
 def get_page(url: str) -> str:
-    """ GET html content """
+    """ Return HTML content """
     res = requests.get(url)
     return res.text
